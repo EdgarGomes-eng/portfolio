@@ -458,7 +458,14 @@ textarea.cf-input{resize:none;height:80px;line-height:1.8}
   transition:background .2s,gap .2s;
 }
 .cf-btn:hover{background:var(--accent);gap:2rem}
+.cf-btn:disabled{opacity:.6;cursor:not-allowed;gap:1.5rem}
 .cf-btn span{font-size:1rem}
+.cf-status{
+  min-height:1.4rem;margin-top:1rem;
+  font-size:.65rem;letter-spacing:.08em;color:var(--muted);
+}
+.cf-status.ok{color:#4dff8f}
+.cf-status.error{color:#ff6450}
 
 /* ── FOOTER ── */
 footer{
@@ -796,23 +803,24 @@ footer{
       </a>
     </div>
   </div>
-  <div class="contact-form">
+  <form class="contact-form" id="contact-form">
     <div class="cf-group">
-      <label class="cf-label">Nome</label>
-      <input class="cf-input" type="text" placeholder="O teu nome">
+      <label class="cf-label" for="contact-name">Nome</label>
+      <input class="cf-input" id="contact-name" name="name" type="text" placeholder="O teu nome" autocomplete="name" required>
     </div>
     <div class="cf-group">
-      <label class="cf-label">Email</label>
-      <input class="cf-input" type="email" placeholder="teu@email.com">
+      <label class="cf-label" for="contact-email">Email</label>
+      <input class="cf-input" id="contact-email" name="email" type="email" placeholder="teu@email.com" autocomplete="email" required>
     </div>
     <div class="cf-group">
-      <label class="cf-label">Mensagem</label>
-      <textarea class="cf-input" placeholder="Olá Edgar..."></textarea>
+      <label class="cf-label" for="contact-message">Mensagem</label>
+      <textarea class="cf-input" id="contact-message" name="message" placeholder="Olá Edgar..." minlength="10" required></textarea>
     </div>
-    <button class="cf-btn" data-hover onclick="alert('Configura com Formspree.io!')">
+    <button class="cf-btn" data-hover type="submit">
       Enviar mensagem <span>→</span>
     </button>
-  </div>
+    <div class="cf-status" id="contact-status" role="status" aria-live="polite"></div>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -924,6 +932,40 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const t=document.querySelector(a.getAttribute('href'));
     if(t)t.scrollIntoView({behavior:'smooth'});
   });
+});
+
+/* ── CONTACT FORM ───────────────────────── */
+const contactForm = document.getElementById('contact-form');
+const contactStatus = document.getElementById('contact-status');
+const contactButton = contactForm?.querySelector('button[type="submit"]');
+
+contactForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  contactStatus.className = 'cf-status';
+  contactStatus.textContent = 'A enviar...';
+  contactButton.disabled = true;
+
+  const payload = Object.fromEntries(new FormData(contactForm).entries());
+
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.ok) {
+      throw new Error(result.error || 'Nao foi possivel enviar a mensagem.');
+    }
+    contactForm.reset();
+    contactStatus.className = 'cf-status ok';
+    contactStatus.textContent = 'Mensagem enviada. Obrigado pelo contacto.';
+  } catch (error) {
+    contactStatus.className = 'cf-status error';
+    contactStatus.textContent = error.message;
+  } finally {
+    contactButton.disabled = false;
+  }
 });
 
 /* ── THREE.JS SCENE ──────────────────────── */
