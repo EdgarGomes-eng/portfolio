@@ -71,31 +71,7 @@ window.CONTENT = (() => {
   const projects = [
     {
       num: '001',
-      name: 'cub3D',
-      summary: { pt: 'Motor de raycasting 3D inspirado no Wolfenstein 3D', en: '3D raycasting engine inspired by Wolfenstein 3D' },
-      tags: ['C', 'Gráficos', 'MiniLibX', '280h'],
-      year: '2025',
-      bonus: false,
-    },
-    {
-      num: '002',
-      name: 'ft_irc',
-      summary: { pt: 'Servidor IRC completo em C++98 com sockets TCP', en: 'Full IRC server in C++98 with TCP sockets' },
-      tags: ['C++', 'Redes', 'IRC', '175h'],
-      year: '2026',
-      bonus: false,
-    },
-    {
-      num: '003',
-      name: 'Inception',
-      summary: { pt: 'Infraestrutura Docker: NGINX + SSL, WordPress, MariaDB', en: 'Docker infrastructure: NGINX + SSL, WordPress, MariaDB' },
-      tags: ['Docker', 'DevOps', 'NGINX', '150h'],
-      year: '2026',
-      bonus: false,
-    },
-    {
-      num: '004',
-      name: 'ft_transcendence',
+      name: 'HollySquad',
       summary: {
         pt: 'Web app fullstack — Pong online em tempo real, OAuth e chat',
         en: 'Full-stack web app — real-time online Pong, OAuth and chat',
@@ -104,17 +80,19 @@ window.CONTENT = (() => {
       year: '2026',
       bonus: true,
       latest: true,
+      repo: 'https://github.com/ahamuyel/transcendence',
     },
     {
-      num: '005',
-      name: 'Philosophers',
+      num: '002',
+      name: 'ZenithCache',
       summary: {
-        pt: 'Multithreading, mutex e prevenção de deadlocks',
-        en: 'Multithreading, mutex and deadlock prevention',
+        pt: 'Uma key-value store em memória de altíssimo desempenho, multi-threaded e ultra-rápida, projetada em C++20 Moderno. Arquitetada para sistemas de baixa latência, a ZenithCache utiliza um motor de rede assíncrono orientado a eventos para lidar com enorme concorrência sem sacrificar a performance previsível.',
+        en: 'A high-performance, ultra-fast, multi-threaded in-memory key-value store engineered in Modern C++20. Architected for low-latency systems, ZenithCache utilizes an asynchronous event-driven network engine to handle massive concurrency without sacrificing predictable performance.',
       },
-      tags: ['C', 'Threads', 'Mutex', '70h'],
-      year: '2025',
-      bonus: true,
+      tags: ['C++20', 'Multithreading', 'Key-Value Store', 'Redes'],
+      year: '2026',
+      bonus: false,
+      repo: 'https://github.com/EdgarGomes-eng/zenithCache',
     },
   ];
 

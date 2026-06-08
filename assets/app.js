@@ -164,7 +164,7 @@
         const tags = p.tags.map((tag) => `<span class="pi-tag">${escapeHtml(tag)}</span>`).join('');
         const bonus = p.bonus ? `<div class="pi-bonus">+ ${lang === 'pt' ? 'bónus' : 'bonus'}</div>` : '';
         const latest = p.latest ? `<div class="pi-latest">${lang === 'pt' ? 'Mais recente' : 'Latest'}</div>` : '';
-        return `
+        const inner = `
         <article class="project-item" data-hover>
           <div class="pi-num">${escapeHtml(p.num)}</div>
           <div class="pi-main">
@@ -176,6 +176,10 @@
           <div class="pi-year">${escapeHtml(p.year)}</div>
           <div class="pi-arrow" aria-hidden="true">↗</div>
         </article>`;
+        if (p.repo) {
+          return `<a href="${escapeHtml(p.repo)}" target="_blank" rel="noopener noreferrer" class="project-link">${inner}</a>`;
+        }
+        return inner;
       })
       .join('');
   }

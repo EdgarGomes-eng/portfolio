@@ -530,6 +530,11 @@ section { position: relative; z-index: 10; scroll-margin-top: 80px; }
   transition: color var(--transition), transform var(--transition);
 }
 .project-item:hover .pi-arrow { color: var(--accent); transform: translate(4px, -4px); }
+.project-link { display: block; text-decoration: none; color: inherit; }
+.project-link:hover .project-item::before { transform: scaleX(1); }
+.project-link:hover .pi-num { color: var(--accent); }
+.project-link:hover .pi-name { color: var(--accent); }
+.project-link:hover .pi-arrow { color: var(--accent); transform: translate(4px, -4px); }
 
 /* ── JOURNEY ───────────────────────────────────── */
 .journey {
