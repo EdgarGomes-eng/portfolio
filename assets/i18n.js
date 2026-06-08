@@ -50,7 +50,7 @@ window.I18N = (() => {
       'about.heading.l3': 'constante.',
       'about.photo.alt': 'Retrato de Edgar Gomes',
       'about.p1': 'Nasci no <strong>Uíge, Angola</strong> a 4 de Abril de 2006. Sou <strong>Engenheiro de Software</strong> e estudante da <strong>42 Luanda</strong> — uma das escolas de programação mais exigentes e inovadoras do planeta.',
-      'about.p2': 'O que me move é perceber <strong>como as coisas funcionam por dentro</strong>. Não me interessa apenas escrever código que funciona — quero saber porquê funciona, o que acontece na memória, como o sistema operativo gere os processos, como os bits viajam pela rede.',
+      'about.p2': 'O que me move é perceber <strong>como as coisas funcionam por dentro</strong>. Não me interessa apenas escrever código que funciona — quero saber por que funciona, o que acontece na memória, como o sistema operativo gere os processos, como os bits viajam pela rede.',
       'about.p3': 'Em Junho de 2026 concluí o tronco comum da 42 com nível 10.96 — entre um motor 3D de raycasting, um servidor IRC em C++98, uma infra Docker completa, threads e mutex para evitar deadlocks, e um web app fullstack em tempo real. A 42 não tem professores — aprendes ou não aprendes.',
       'about.cta': 'Vamos conversar →',
 
